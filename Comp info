@@ -1,0 +1,140 @@
+// src/components/TransactionConfirmation/ComplianceInfo.tsx
+import React from 'react';
+import styled from 'styled-components';
+
+const InfoContainer = styled.div`
+  background: #F8F9FA;
+  border: 1px solid #DEE2E6;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+`;
+
+const Title = styled.h4`
+  margin: 0 0 15px 0;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1em;
+`;
+
+const ChecklistGrid = styled.div`
+  display: grid;
+  gap: 10px;
+`;
+
+const CheckItem = styled.div<{ $warning?: boolean }>`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 4px;
+  border-left: 3px solid ${props => props.$warning ? '#FFC107' : '#28A745'};
+  
+  span:first-child {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+  
+  span:last-child {
+    flex: 1;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #495057;
+  }
+`;
+
+const ProvidersFooter = styled.div`
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #DEE2E6;
+  font-size: 0.85em;
+  color: #6C757D;
+  
+  strong {
+    color: #495057;
+  }
+`;
+
+const ProviderTag = styled.span`
+  display: inline-block;
+  background: #E9ECEF;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin: 0 4px;
+  font-size: 0.9em;
+`;
+
+export const TransactionComplianceInfo: React.FC = () => {
+  return (
+    <InfoContainer>
+      <Title>
+        🔍 Transaction Monitoring Checklist
+      </Title>
+      
+      <ChecklistGrid>
+        <CheckItem>
+          <span>✓</span>
+          <span>
+            <strong>Source address screened</strong> against OFAC SDN (Specially Designated Nationals) list
+          </span>
+        </CheckItem>
+        
+        <CheckItem>
+          <span>✓</span>
+          <span>
+            <strong>Destination address verified</strong> for sanctions compliance and terrorist financing risks
+          </span>
+        </CheckItem>
+        
+        <CheckItem>
+          <span>✓</span>
+          <span>
+            <strong>Token contracts validated</strong> to ensure they're not on restricted or fraudulent lists
+          </span>
+        </CheckItem>
+        
+        <CheckItem>
+          <span>✓</span>
+          <span>
+            <strong>Liquidity pool compliance verified</strong> to avoid sanctioned or high-risk pools
+          </span>
+        </CheckItem>
+        
+        <CheckItem $warning>
+          <span>⚠️</span>
+          <span>
+            <strong>Transaction recorded on-chain</strong> - Permanently visible and immutable. 
+            Cannot be reversed or deleted.
+          </span>
+        </CheckItem>
+        
+        <CheckItem $warning>
+          <span>⚠️</span>
+          <span>
+            <strong>Third-party monitoring active</strong> - Analytics providers continuously 
+            track all on-chain activity for suspicious patterns.
+          </span>
+        </CheckItem>
+      </ChecklistGrid>
+      
+      <ProvidersFooter>
+        <strong>Analytics Providers:</strong>
+        <ProviderTag>Chainalysis</ProviderTag>
+        <ProviderTag>TRM Labs</ProviderTag>
+        <ProviderTag>Elliptic</ProviderTag>
+        <ProviderTag>Arkham Intelligence</ProviderTag>
+      </ProvidersFooter>
+    </InfoContainer>
+  );
+};
+
+// To use this component, import it in your transaction confirmation modal:
+// import { TransactionComplianceInfo } from './ComplianceInfo';
+// 
+// Then place it in your transaction review/confirmation screen:
+// {/* Transaction details */}
+// <TransactionComplianceInfo />
+// {/* Confirm button */}
