@@ -1,0 +1,15 @@
+# Clone Uniswap Interface
+   git clone https://github.com/Uniswap/interface.git hillswap
+   cd hillswap
+   
+   # Remove original remote and add yours
+   git remote remove origin
+   git remote add origin https://github.com/YOUR-USERNAME/hillswap.git
+   
+   # Install dependencies
+   yarn install
+   
+   # Make initial commit
+   git add .
+   git commit -m "Initial fork of Uniswap Interface for HillSwap educational project"
+   git push -u origin main
