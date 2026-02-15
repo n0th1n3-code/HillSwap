@@ -1,0 +1,168 @@
+// src/components/EducationalOverlay/index.tsx
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const OverlayContainer = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #1C3F94;
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+`;
+
+const HeaderRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 15px;
+`;
+
+const BrandSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+`;
+
+const CapitolIcon = styled.span`
+  font-size: 24px;
+`;
+
+const BrandText = styled.div`
+  h1 {
+    font-size: 1.1em;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  p {
+    margin: 2px 0 0 0;
+    font-size: 0.85em;
+    opacity: 0.9;
+  }
+`;
+
+const ToggleLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  
+  input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  
+  span {
+    font-size: 0.9em;
+  }
+`;
+
+const InfoPanel = styled.div`
+  max-width: 1200px;
+  margin: 15px auto 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+`;
+
+const InfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+`;
+
+const InfoCard = styled.div`
+  strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1em;
+  }
+  
+  p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin: 5px 0 0 0;
+    opacity: 0.95;
+  }
+`;
+
+export const EducationalOverlay: React.FC = () => {
+  const [showInfo, setShowInfo] = useState(true);
+  
+  return (
+    <OverlayContainer>
+      <HeaderRow>
+        <BrandSection>
+          <CapitolIcon>🏛️</CapitolIcon>
+          <BrandText>
+            <h1>HillSwap Educational Interface</h1>
+            <p>For Congressional Staff Training Only - Not for Actual Trading</p>
+          </BrandText>
+        </BrandSection>
+        
+        <ToggleLabel>
+          <input 
+            type="checkbox" 
+            checked={showInfo}
+            onChange={() => setShowInfo(!showInfo)}
+          />
+          <span>Show Educational Info</span>
+        </ToggleLabel>
+      </HeaderRow>
+      
+      {showInfo && (
+        <InfoPanel>
+          <h3 style={{ marginTop: 0, fontSize: '1.1em' }}>
+            Understanding DeFi Compliance Monitoring
+          </h3>
+          <InfoGrid>
+            <InfoCard>
+              <strong>🔍 Frontend Screening</strong>
+              <p>
+                User interfaces can screen addresses against sanctions lists before 
+                allowing transaction submission. This is a "soft" control that can be 
+                bypassed by interacting directly with smart contracts.
+              </p>
+            </InfoCard>
+            
+            <InfoCard>
+              <strong>⛓️ On-chain Transparency</strong>
+              <p>
+                All transactions are permanently recorded on the blockchain and 
+                publicly analyzable by anyone, including law enforcement and 
+                regulatory agencies.
+              </p>
+            </InfoCard>
+            
+            <InfoCard>
+              <strong>🚫 No Reversal</strong>
+              <p>
+                Unlike traditional banking, blockchain transactions cannot be 
+                reversed, frozen, or seized without private key access. This is a 
+                fundamental difference from traditional finance.
+              </p>
+            </InfoCard>
+            
+            <InfoCard>
+              <strong>📊 Third-party Analytics</strong>
+              <p>
+                Companies like Chainalysis provide ongoing monitoring and can 
+                trace funds across multiple transactions and wallets using 
+                sophisticated analysis tools.
+              </p>
+            </InfoCard>
+          </InfoGrid>
+        </InfoPanel>
+      )}
+    </OverlayContainer>
+  );
+};
