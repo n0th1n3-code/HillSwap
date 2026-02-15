@@ -1,0 +1,145 @@
+// src/pages/Send/ComplianceSection.tsx
+import React from 'react';
+import styled from 'styled-components';
+
+const SectionContainer = styled.div`
+  background: #FFF;
+  border: 2px solid #1C3F94;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+`;
+
+const SectionTitle = styled.h3`
+  color: #1C3F94;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2em;
+`;
+
+const TwoColumnGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Column = styled.div`
+  h4 {
+    color: #1C3F94;
+    margin: 0 0 10px 0;
+    font-size: 1.05em;
+  }
+  
+  p {
+    margin: 0 0 10px 0;
+    color: #495057;
+    font-size: 0.95em;
+  }
+  
+  ul {
+    line-height: 1.8;
+    margin: 0;
+    padding-left: 20px;
+    color: #495057;
+  }
+  
+  li {
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+`;
+
+const AlertBox = styled.div`
+  margin-top: 20px;
+  padding: 15px;
+  background: #FFF3CD;
+  border-radius: 6px;
+  border-left: 4px solid #856404;
+  
+  strong {
+    color: #856404;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #333;
+    line-height: 1.6;
+  }
+`;
+
+export const SendComplianceSection: React.FC = () => {
+  return (
+    <SectionContainer>
+      <SectionTitle>
+        📋 Compliance Screening for Crypto Transfers
+      </SectionTitle>
+      
+      <TwoColumnGrid>
+        <Column>
+          <h4>Address Screening</h4>
+          <p>Recipient address checked against:</p>
+          <ul>
+            <li>OFAC Specially Designated Nationals (SDN) list</li>
+            <li>UN Security Council sanctions lists</li>
+            <li>EU financial sanctions database</li>
+            <li>Known mixer/tumbler addresses (Tornado Cash, etc.)</li>
+            <li>Darknet market associated addresses</li>
+            <li>Ransomware-linked wallets (Lazarus Group, etc.)</li>
+            <li>Sanctioned entities (Russia, North Korea, Iran)</li>
+          </ul>
+        </Column>
+        
+        <Column>
+          <h4>Transaction Monitoring</h4>
+          <p>Real-time analysis includes:</p>
+          <ul>
+            <li>Source of funds tracing (up to 10 transaction hops)</li>
+            <li>Destination wallet risk scoring (0-100 scale)</li>
+            <li>Suspicious activity pattern detection</li>
+            <li>Large transaction threshold alerts (&gt;$10,000)</li>
+            <li>Regulatory reporting triggers (e.g., FinCEN SAR)</li>
+            <li>Cross-chain transaction tracking and analysis</li>
+            <li>Counterparty due diligence verification</li>
+          </ul>
+        </Column>
+      </TwoColumnGrid>
+      
+      <AlertBox>
+        <strong>⚠️ Important: Immutability of Blockchain Transactions</strong>
+        <p>
+          Unlike traditional banking where transactions can be reversed or frozen, blockchain 
+          transactions are immutable once confirmed. Compliance screening occurs at the interface 
+          level, but once submitted to the blockchain, transactions are permanent and cannot be 
+          undone. All transactions are permanently recorded and publicly visible on the blockchain.
+        </p>
+      </AlertBox>
+      
+      <AlertBox style={{ background: '#D1ECF1', borderColor: '#0C5460', marginTop: '15px' }}>
+        <strong style={{ color: '#0C5460' }}>📊 Analytics & Monitoring</strong>
+        <p>
+          Third-party blockchain analytics firms (Chainalysis, TRM Labs, Elliptic) continuously 
+          monitor all on-chain activity. They can trace funds across multiple wallets and 
+          exchanges, identify patterns of illicit activity, and provide intelligence to law 
+          enforcement and regulatory agencies worldwide.
+        </p>
+      </AlertBox>
+    </SectionContainer>
+  );
+};
+
+// To use this component, import it in your Send page:
+// import { SendComplianceSection } from './ComplianceSection';
+// 
+// Then place it at the top of your send/transfer interface:
+// <SendComplianceSection />
+// {/* Your existing send form */}
