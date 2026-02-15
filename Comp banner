@@ -1,0 +1,67 @@
+// src/components/swap/ComplianceBanner.tsx
+import React from 'react';
+import styled from 'styled-components';
+
+const BannerContainer = styled.div`
+  background: #D1ECF1;
+  border: 1px solid #0C5460;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+`;
+
+const ShieldIcon = styled.span`
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+`;
+
+const BannerContent = styled.div`
+  flex: 1;
+  
+  strong {
+    display: block;
+    color: #0C5460;
+    margin-bottom: 5px;
+    font-size: 1em;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #0C5460;
+    line-height: 1.5;
+  }
+`;
+
+const ProviderList = styled.span`
+  font-weight: 500;
+  color: #062730;
+`;
+
+export const SwapComplianceBanner: React.FC = () => {
+  return (
+    <BannerContainer>
+      <ShieldIcon>🛡️</ShieldIcon>
+      <BannerContent>
+        <strong>Transaction Compliance Screening</strong>
+        <p>
+          This transaction will be screened for OFAC compliance and sanctions violations 
+          before execution. Blocked addresses cannot complete transactions. On-chain analytics 
+          providers (<ProviderList>Chainalysis, TRM Labs, Elliptic</ProviderList>) monitor 
+          all swap transactions in real-time.
+        </p>
+      </BannerContent>
+    </BannerContainer>
+  );
+};
+
+// To use this component, import it in your swap modal or swap page component:
+// import { SwapComplianceBanner } from './ComplianceBanner';
+// 
+// Then place it at the top of your swap interface:
+// <SwapComplianceBanner />
+// {/* Your existing swap UI */}
