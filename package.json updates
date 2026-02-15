@@ -1,0 +1,72 @@
+{
+  "name": "hillswap",
+  "version": "1.0.0-educational",
+  "description": "Educational DeFi interface for Congressional staff - NOT FOR ACTUAL TRADING",
+  "keywords": [
+    "defi",
+    "educational",
+    "congressional",
+    "compliance",
+    "cryptocurrency",
+    "ethereum",
+    "demo"
+  ],
+  "author": "Congressional Staff Education Initiative",
+  "license": "GPL-3.0-or-later",
+  "homepage": ".",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/[your-org]/hillswap.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,md}'"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "styled-components": "^5.3.6",
+    "@web3-react/core": "^8.2.0",
+    "@web3-react/metamask": "^8.2.0",
+    "@web3-react/walletconnect-v2": "^8.3.7",
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26",
+    "typescript": "^4.9.5",
+    "eslint": "^8.34.0",
+    "prettier": "^2.8.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "config": {
+    "educationalMode": true,
+    "allowRealTransactions": false,
+    "defaultNetwork": "sepolia",
+    "complianceMonitoring": {
+      "enabled": true,
+      "providers": [
+        "chainalysis",
+        "trm-labs",
+        "elliptic"
+      ]
+    }
+  }
+}
