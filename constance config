@@ -1,0 +1,182 @@
+// src/constants/hillswap.ts
+// HillSwap Educational Interface Configuration
+
+export const HILLSWAP_CONFIG = {
+  APP_NAME: 'HillSwap',
+  APP_DESCRIPTION: 'Educational DeFi Interface for Congressional Staff',
+  EDUCATIONAL_MODE: true,
+  ALLOW_REAL_TRANSACTIONS: false,
+  VERSION: '1.0.0-educational',
+};
+
+export const COMPLIANCE_PROVIDERS = [
+  {
+    name: 'Chainalysis',
+    description: 'Blockchain analytics and compliance platform',
+    website: 'https://www.chainalysis.com',
+  },
+  {
+    name: 'TRM Labs',
+    description: 'Blockchain intelligence and risk management',
+    website: 'https://www.trmlabs.com',
+  },
+  {
+    name: 'Elliptic',
+    description: 'Crypto compliance and risk management',
+    website: 'https://www.elliptic.co',
+  },
+  {
+    name: 'Arkham Intelligence',
+    description: 'On-chain intelligence platform',
+    website: 'https://www.arkhamintelligence.com',
+  },
+  {
+    name: 'OFAC SDN List API',
+    description: 'Treasury Department sanctions screening',
+    website: 'https://sanctionssearch.ofac.treas.gov',
+  },
+];
+
+export const EDUCATIONAL_RESOURCES = {
+  ofacGuidance: {
+    title: 'OFAC Sanctions Programs',
+    url: 'https://ofac.treasury.gov/sanctions-programs-and-country-information',
+    description: 'US Treasury guidance on sanctions compliance',
+  },
+  fincenCrypto: {
+    title: 'FinCEN Virtual Currency Guidance',
+    url: 'https://www.fincen.gov/resources/statutes-and-regulations/guidance',
+    description: 'Financial Crimes Enforcement Network cryptocurrency guidance',
+  },
+  secFramework: {
+    title: 'SEC Digital Assets Framework',
+    url: 'https://www.sec.gov/digital-assets',
+    description: 'Securities and Exchange Commission crypto regulations',
+  },
+  cftcGuidance: {
+    title: 'CFTC Virtual Currencies',
+    url: 'https://www.cftc.gov/Bitcoin/index.htm',
+    description: 'Commodity Futures Trading Commission guidance',
+  },
+  gaoReports: {
+    title: 'GAO Cryptocurrency Reports',
+    url: 'https://www.gao.gov/cryptocurrency',
+    description: 'Government Accountability Office analysis and reports',
+  },
+  crsReports: {
+    title: 'Congressional Research Service',
+    url: 'https://crsreports.congress.gov',
+    description: 'CRS reports on cryptocurrency and blockchain technology',
+  },
+};
+
+export const ETHICS_CONTACTS = {
+  house: {
+    name: 'House Committee on Ethics',
+    email: 'ethicscommittee@mail.house.gov',
+    phone: '(202) 225-7103',
+    website: 'https://ethics.house.gov',
+  },
+  senate: {
+    name: 'Senate Select Committee on Ethics',
+    email: 'ethics@ethics.senate.gov',
+    phone: '(202) 224-2981',
+    website: 'https://www.ethics.senate.gov',
+  },
+};
+
+export const COMPLIANCE_MONITORING_STEPS = {
+  walletConnection: [
+    'OFAC sanctions screening of wallet addresses',
+    'Transaction pattern analysis via Chainalysis/TRM Labs',
+    'Real-time screening against SDN list',
+    'Geolocation verification for regulatory compliance',
+    'VPN/proxy detection',
+    'Historical wallet activity risk assessment',
+  ],
+  transactionExecution: [
+    'Source address OFAC compliance check',
+    'Destination address sanctions verification',
+    'Token contract validation',
+    'Liquidity pool compliance verification',
+    'On-chain recording (permanent & public)',
+    'Third-party analytics monitoring activation',
+  ],
+  postTransaction: [
+    'Blockchain indexing by analytics providers',
+    'Ongoing transaction monitoring',
+    'Pattern analysis for suspicious activity',
+    'Regulatory reporting trigger evaluation',
+    'Cross-chain activity correlation',
+    'Law enforcement intelligence feeds',
+  ],
+};
+
+export const SANCTIONS_LISTS = [
+  'OFAC Specially Designated Nationals (SDN)',
+  'UN Security Council Consolidated List',
+  'EU Financial Sanctions Database',
+  'UK Office of Financial Sanctions Implementation',
+  'Known mixer/tumbler addresses',
+  'Darknet market associated wallets',
+  'Ransomware-linked addresses',
+  'Sanctioned nation wallets (Russia, North Korea, Iran)',
+];
+
+export const TESTNET_CONFIG = {
+  defaultNetwork: 'sepolia',
+  allowedNetworks: ['sepolia', 'goerli', 'mumbai'],
+  disabledNetworks: ['mainnet', 'polygon', 'arbitrum', 'optimism'],
+  warningMessage: 'Educational interface - Testnet only. Mainnet disabled.',
+};
+
+export const DISCLAIMER_TEXT = {
+  short: 'Educational tool only - Not for actual trading',
+  long: `This is an educational demonstration interface created for Congressional staff 
+         to understand decentralized exchange operations and compliance mechanisms. 
+         Do not use for actual cryptocurrency transactions. Consult the appropriate 
+         Ethics Committee before engaging with cryptocurrency.`,
+};
+
+// Theme colors matching Congressional branding
+export const HILLSWAP_THEME = {
+  primary: '#1C3F94', // Congressional blue
+  secondary: '#B31942', // Flag red
+  accent: '#FFFFFF', // White
+  background: '#F8F9FA',
+  text: '#212529',
+  success: '#28A745',
+  warning: '#FFC107',
+  danger: '#DC3545',
+  info: '#17A2B8',
+};
+
+// Compliance alert levels
+export const ALERT_LEVELS = {
+  CRITICAL: {
+    level: 'critical',
+    color: '#DC3545',
+    icon: '🚨',
+    action: 'Block transaction immediately',
+  },
+  HIGH: {
+    level: 'high',
+    color: '#FD7E14',
+    icon: '⚠️',
+    action: 'Require additional verification',
+  },
+  MEDIUM: {
+    level: 'medium',
+    color: '#FFC107',
+    icon: '⚡',
+    action: 'Enhanced monitoring',
+  },
+  LOW: {
+    level: 'low',
+    color: '#28A745',
+    icon: '✓',
+    action: 'Standard processing',
+  },
+};
+
+export default HILLSWAP_CONFIG;
