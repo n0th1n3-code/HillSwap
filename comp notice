@@ -1,0 +1,104 @@
+// src/components/WalletModal/ComplianceNotice.tsx
+import React from 'react';
+import styled from 'styled-components';
+
+const NoticeContainer = styled.div`
+  background: #FFF3CD;
+  border: 2px solid #856404;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+`;
+
+const NoticeTitle = styled.h3`
+  margin: 0 0 15px 0;
+  color: #856404;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1em;
+`;
+
+const NoticeText = styled.div`
+  color: #333;
+  
+  p {
+    margin: 0 0 10px 0;
+    font-weight: 500;
+  }
+  
+  ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    line-height: 1.8;
+  }
+  
+  li {
+    margin-bottom: 8px;
+  }
+`;
+
+const CheckIcon = styled.span`
+  color: #28A745;
+  margin-right: 5px;
+`;
+
+const Disclaimer = styled.p`
+  font-size: 0.9em;
+  margin-top: 15px;
+  font-style: italic;
+  color: #666;
+  padding-top: 15px;
+  border-top: 1px solid #856404;
+`;
+
+export const WalletComplianceNotice: React.FC = () => {
+  return (
+    <NoticeContainer>
+      <NoticeTitle>
+        ⚠️ Compliance Monitoring Active
+      </NoticeTitle>
+      <NoticeText>
+        <p>When you connect your wallet, the following monitoring occurs:</p>
+        <ul>
+          <li>
+            <CheckIcon>✓</CheckIcon>
+            OFAC sanctions screening of wallet addresses
+          </li>
+          <li>
+            <CheckIcon>✓</CheckIcon>
+            Transaction pattern analysis via Chainalysis/TRM Labs
+          </li>
+          <li>
+            <CheckIcon>✓</CheckIcon>
+            Real-time screening against SDN (Specially Designated Nationals) list
+          </li>
+          <li>
+            <CheckIcon>✓</CheckIcon>
+            Geolocation verification for regulatory compliance
+          </li>
+          <li>
+            <CheckIcon>✓</CheckIcon>
+            VPN/proxy detection to prevent circumvention
+          </li>
+          <li>
+            <CheckIcon>✓</CheckIcon>
+            Historical wallet activity risk assessment
+          </li>
+        </ul>
+        <Disclaimer>
+          <strong>Note:</strong> This is an educational demonstration only. No actual 
+          monitoring occurs in this interface. Real exchanges use these mechanisms to 
+          comply with sanctions and anti-money laundering regulations.
+        </Disclaimer>
+      </NoticeText>
+    </NoticeContainer>
+  );
+};
+
+// To use this component, import it in your WalletModal component:
+// import { WalletComplianceNotice } from './ComplianceNotice';
+// 
+// Then place it before your wallet connection options:
+// <WalletComplianceNotice />
+// {/* Your existing wallet connection buttons */}
