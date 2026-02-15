@@ -1,0 +1,265 @@
+// src/pages/Disclaimer/index.tsx
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+const Header = styled.div`
+  text-align: center;
+  margin-bottom: 30px;
+`;
+
+const CapitolIcon = styled.div`
+  font-size: 60px;
+  margin-bottom: 10px;
+`;
+
+const Title = styled.h1`
+  color: #1C3F94;
+  margin: 0;
+  font-size: 2em;
+`;
+
+const Subtitle = styled.p`
+  color: #6C757D;
+  margin-top: 10px;
+  font-size: 1.05em;
+`;
+
+const WarningBox = styled.div`
+  background: #FFF3CD;
+  border: 3px solid #856404;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+`;
+
+const WarningTitle = styled.h2`
+  margin-top: 0;
+  color: #856404;
+  font-size: 1.4em;
+`;
+
+const WarningList = styled.ul`
+  line-height: 1.8;
+  font-size: 1.05em;
+  
+  li {
+    margin-bottom: 8px;
+    
+    strong {
+      color: #721C24;
+    }
+  }
+`;
+
+const InfoBox = styled.div`
+  background: #D1ECF1;
+  border: 2px solid #0C5460;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+`;
+
+const InfoTitle = styled.h3`
+  margin-top: 0;
+  color: #0C5460;
+`;
+
+const InfoList = styled.ul`
+  line-height: 1.8;
+  margin: 10px 0;
+`;
+
+const EthicsBox = styled.div`
+  background: #F8D7DA;
+  border: 2px solid #721C24;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+`;
+
+const EthicsTitle = styled.h3`
+  margin-top: 0;
+  color: #721C24;
+`;
+
+const ContactList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  
+  li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+  }
+`;
+
+const CheckboxLabel = styled.label<{ $checked?: boolean }>`
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  background: #F8F9FA;
+  border: 2px solid ${props => props.$checked ? '#1C3F94' : '#DEE2E6'};
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: #1C3F94;
+    background: #F0F4FF;
+  }
+  
+  input {
+    margin-top: 4px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  span {
+    line-height: 1.6;
+    flex: 1;
+  }
+`;
+
+const ContinueButton = styled.button<{ disabled: boolean }>`
+  width: 100%;
+  padding: 18px;
+  font-size: 1.1em;
+  font-weight: bold;
+  background: ${props => props.disabled ? '#CCC' : '#1C3F94'};
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  transition: all 0.3s;
+  
+  &:hover {
+    background: ${props => props.disabled ? '#CCC' : '#152D6E'};
+    transform: ${props => props.disabled ? 'none' : 'translateY(-2px)'};
+    box-shadow: ${props => props.disabled ? 'none' : '0 4px 8px rgba(28, 63, 148, 0.3)'};
+  }
+`;
+
+const FooterText = styled.p`
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #6C757D;
+`;
+
+export const DisclaimerPage: React.FC = () => {
+  const [agreed, setAgreed] = useState(false);
+  const [ethicsAcknowledged, setEthicsAcknowledged] = useState(false);
+  const navigate = useNavigate();
+  
+  const handleContinue = () => {
+    if (agreed && ethicsAcknowledged) {
+      localStorage.setItem('hillswap_disclaimer_accepted', 'true');
+      navigate('/swap');
+    }
+  };
+  
+  return (
+    <Container>
+      <Header>
+        <CapitolIcon>🏛️</CapitolIcon>
+        <Title>HillSwap Educational Interface</Title>
+        <Subtitle>Decentralized Exchange Compliance Demonstration Tool</Subtitle>
+      </Header>
+      
+      <WarningBox>
+        <WarningTitle>⚠️ IMPORTANT NOTICE</WarningTitle>
+        <WarningList>
+          <li><strong>This is an EDUCATIONAL TOOL ONLY</strong></li>
+          <li>Congressional staffers are subject to strict ethics rules regarding cryptocurrency holdings and transactions</li>
+          <li><strong>DO NOT use this interface for actual cryptocurrency transactions</strong></li>
+          <li>Do NOT connect real wallets containing actual funds</li>
+          <li>Consult the House Ethics Committee or Senate Select Committee on Ethics before any crypto-related activities</li>
+          <li>This interface demonstrates compliance monitoring mechanisms used by real decentralized exchanges</li>
+          <li>No actual compliance monitoring occurs in this educational version</li>
+        </WarningList>
+      </WarningBox>
+      
+      <InfoBox>
+        <InfoTitle>Educational Purpose</InfoTitle>
+        <p>This interface is designed to help Congressional staff understand:</p>
+        <InfoList>
+          <li>How decentralized exchanges operate</li>
+          <li>What compliance monitoring mechanisms exist in DeFi</li>
+          <li>How OFAC sanctions screening is implemented</li>
+          <li>The role of blockchain analytics companies</li>
+          <li>The differences between centralized and decentralized finance</li>
+          <li>Regulatory challenges in the cryptocurrency ecosystem</li>
+        </InfoList>
+      </InfoBox>
+      
+      <EthicsBox>
+        <EthicsTitle>Ethics Compliance Reminder</EthicsTitle>
+        <p><strong>Before engaging with cryptocurrency in any capacity, Congressional staff must:</strong></p>
+        <InfoList>
+          <li>Review the STOCK Act implications for digital asset holdings</li>
+          <li>Understand financial disclosure requirements for crypto assets over $1,000</li>
+          <li>Consult with their respective Ethics Committee</li>
+          <li>Be aware of potential conflict of interest issues when working on crypto-related legislation</li>
+          <li>Report any cryptocurrency transactions as required by ethics rules</li>
+        </InfoList>
+        <p style={{ marginTop: '15px' }}><strong>Contacts:</strong></p>
+        <ContactList>
+          <li>📧 House Ethics Committee: ethicscommittee@mail.house.gov</li>
+          <li>📧 Senate Ethics Committee: ethics@ethics.senate.gov</li>
+        </ContactList>
+      </EthicsBox>
+      
+      <div>
+        <CheckboxLabel $checked={agreed}>
+          <input 
+            type="checkbox" 
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+          />
+          <span>
+            <strong>I understand this is for educational purposes only</strong> and I will NOT 
+            use this interface for actual cryptocurrency transactions. I will NOT connect 
+            wallets containing real funds to this interface.
+          </span>
+        </CheckboxLabel>
+        
+        <CheckboxLabel $checked={ethicsAcknowledged}>
+          <input 
+            type="checkbox" 
+            checked={ethicsAcknowledged}
+            onChange={(e) => setEthicsAcknowledged(e.target.checked)}
+          />
+          <span>
+            <strong>I acknowledge my responsibility</strong> to consult the appropriate Ethics 
+            Committee before engaging in any actual cryptocurrency activities, and I understand 
+            the disclosure and reporting requirements for Congressional staff.
+          </span>
+        </CheckboxLabel>
+      </div>
+      
+      <ContinueButton
+        onClick={handleContinue}
+        disabled={!agreed || !ethicsAcknowledged}
+      >
+        Continue to Educational Interface →
+      </ContinueButton>
+      
+      <FooterText>
+        Questions? Contact your Legislative Counsel or Ethics Committee
+      </FooterText>
+    </Container>
+  );
+};
